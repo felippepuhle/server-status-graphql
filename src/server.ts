@@ -5,7 +5,8 @@ import { createServer } from "http";
 import compression from "compression";
 import cors from "cors";
 
-import schema from "./schema";
+import { updateServerStatus } from "./monitoring";
+import { schema } from "./schema";
 
 const PORT = process.env.PORT || 3000;
 
@@ -25,6 +26,8 @@ const httpServer = createServer(app);
 server.installSubscriptionHandlers(httpServer);
 
 httpServer.listen(PORT, () => {
+  setInterval(updateServerStatus, 5000);
+
   console.log(
     `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
   );

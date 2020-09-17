@@ -3,7 +3,7 @@ import { IResolvers } from "graphql-tools";
 import { pubSub, JOBS_CHANGED, STATUS_CHANGED } from "./pubSub";
 import { store } from "./store";
 
-const resolvers: IResolvers = {
+export const resolvers: IResolvers = {
   Query: {
     jobs: () => store.jobs,
     status: () => store.status,
@@ -17,7 +17,7 @@ const resolvers: IResolvers = {
       setTimeout(() => {
         store.jobs.running--;
         pubSub.publish(JOBS_CHANGED, { jobsChanged: store.jobs });
-      }, 10000);
+      }, 30000);
 
       return store.jobs;
     },
@@ -31,5 +31,3 @@ const resolvers: IResolvers = {
     },
   },
 };
-
-export default resolvers;

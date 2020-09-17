@@ -1,7 +1,7 @@
 type ServerStatus {
-  cpu: Int!
-  memory: Int!
-  disk: Int!
+  cpu: Float!
+  memory: Float!
+  disk: Float!
 }
 
 type Jobs {
