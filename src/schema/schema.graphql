@@ -1,0 +1,24 @@
+type ServerStatus {
+  cpu: Int!
+  memory: Int!
+  disk: Int!
+}
+
+type Jobs {
+  running: Int!
+  total: Int!
+}
+
+type Query {
+  jobs: Jobs!
+  status: ServerStatus!
+}
+
+type Mutation {
+  addJob: Jobs!
+}
+
+type Subscription {
+  jobsChanged: Jobs!
+  statusChanged: ServerStatus!
+}
