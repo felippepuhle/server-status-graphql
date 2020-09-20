@@ -1,10 +1,12 @@
 type ServerStatus {
+  id: ID!
   cpu: Float!
   memory: Float!
   disk: Float!
 }
 
 type Jobs {
+  id: ID!
   running: Int!
   total: Int!
 }
